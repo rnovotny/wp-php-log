@@ -1,0 +1,17 @@
+/***** WP PHP LOG ADMIN CSS *****/
+
+/***** PRE *****/
+
+.rn_php_pre {
+	border: 1px solid #aaa;
+	padding: 10px;
+	background-color: white;
+	width: 98%;
+}
+
+#rn_wpphp_controls {
+	border: 1px solid #aaa;
+	padding: 0px 10px 10px 10px;
+	background-color: white;
+	width: 98%;
+}
