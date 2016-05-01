@@ -21,6 +21,9 @@ wp_php_log ( $post_meta, "post meta" );
 $variable = "If you don't specify a variable name string...";
 wp_php_log ( $variable);
 
+global $woocommerce;
+wp_php_log ( $woocommerce, 'woocommerce object' );
+
 // BASIC SECURITY
 defined( 'ABSPATH' ) or die( 'Unauthorized Access!' );
 
@@ -84,7 +87,7 @@ function rn_wpphp_main_page(){
 				
 		forEach ( $log as $item ) {
 			echo '<div class="rn_wpphp_item"><h4>' . $item['name'] . '</h4>';
-			if ( is_array ( $item['var'] ) ) {
+			if ( is_array ( $item['var'] ) OR is_object ( $item['var'] ) ) {
 				echo '<pre class="rn_wpphp_var_dump rn_php_pre">';
 				var_dump ( $item['var'] );
 				echo '</pre>';
