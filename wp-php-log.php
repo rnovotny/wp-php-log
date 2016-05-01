@@ -59,12 +59,12 @@ function rn_wpphp_main_page(){
 			
 		echo "<h2>" . __('WordPress PHP Log Plugin', 'wp-php-log') . '</h2>';
 		
-		echo "<pre class='rn_php_pre'>" . __('<strong>Usage:</strong> wp_php_log( mixed $var [, string $name = date("r") ] )', 'wp-php-log') . '</pre>';
-		echo "<pre class='rn_php_pre'>" . __('<strong>Example:</strong> wp_php_log( $my_variable, "my variable" ) ', 'wp-php-log') . '</pre>';	
+		echo "<pre class='rn_php_pre'>" . __('<strong>Usage: </strong>wp_php_log( mixed $var [, string $name = date("r") ] )', 'wp-php-log') . '</pre>';
+		echo "<pre class='rn_php_pre'>" . __('<strong>Example: </strong>wp_php_log( $my_variable, "my variable" ); ', 'wp-php-log') . '</pre>';	
 		
 		echo '<div id="rn_wpphp_controls">';
 			echo '<p><strong>' . __('Controls', 'wp-php-log') . '</strong></p>';
-			echo '<p>' . __('Array mode', 'wp-php-log') . '</p>';
+			echo '<p>' . __('Filter output type', 'wp-php-log') . '</p>';
 			echo '<label class="rn_wpphp_show_var_dump"><input type="radio" name="rn_wpphp_array_setting" value="rn_wpphp_show_var_dump">' . __('var_dump', 'wp-php-log') . '</label><br>';
 			echo '<label class="rn_wpphp_show_print_r"><input type="radio" name="rn_wpphp_array_setting" value="rn_wpphp_show_print_r">' . __('print_r', 'wp-php-log') . '</label><br><br>';
 			echo "<button type='button' class='button button-secondary' id='rn_wpphp_delete_button'>" . __('Clear Log', 'wp-php-log' ) . "</button>";
