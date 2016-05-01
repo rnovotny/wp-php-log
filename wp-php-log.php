@@ -26,7 +26,6 @@ function wp_php_log ( $var, $name = '' ) {
 		'name' => $name,
 	);
 	update_option ( 'rn_wpphp_log', $log );
-	
 }
 
 function rn_wpphp_register_menu_page(){
@@ -101,8 +100,6 @@ function rn_wpphp_main_page(){
 }
 
 function rn_wpphp_clear_log() {
-	// if nonce is verified 
-	
 	$verified = wp_verify_nonce( $_REQUEST['rn_wpphp_nonce'], 'rn_wpphp_delete_action' );
 	
 	if ( $verified == 1 ) {
@@ -111,14 +108,6 @@ function rn_wpphp_clear_log() {
 	} else {
 		echo 'failed';
 	}
-		
 	wp_die();
-
 }
-
-//AJAX Reset button
 add_action( 'wp_ajax_rn_wpphp_delete_action', 'rn_wpphp_clear_log' );
-add_action( 'wp_ajax_nopriv_rn_wpphp_delete_action', 'rn_wpphp_clear_log' );
-
-
-
