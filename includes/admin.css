@@ -14,3 +14,21 @@
 	background-color: white;
 	width: 98%;
 }
+
+@media screen and (max-width: 1272px ) {
+	.rn_php_pre, 
+	#rn_wpphp_controls {
+		width: 95%;
+	}
+}
+
+@media screen and (max-width: 436px ) {
+
+	#rn_wpphp_main_page {
+		margin-left: -8px;
+	}
+	.rn_php_pre, 
+	#rn_wpphp_controls {
+		width: 91%;
+	}
+}

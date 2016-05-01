@@ -11,7 +11,6 @@ jQuery(document).ready(function($){
 			}).success( function( returnedData ) {
 				console.log('AJAX return: ' + returnedData  )
 				if ( returnedData === 'success' ) {
-					console.log("remove items...")
 					$('.rn_wpphp_item').remove()
 				}
 			})
