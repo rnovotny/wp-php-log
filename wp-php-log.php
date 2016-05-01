@@ -10,27 +10,6 @@ Author URI: https://ryanmnovotny.com
 License: GPLv2
 Version: 1.0.0
 */
-$my_variable = null;
-wp_php_log ( $my_variable, "null" );
-
-$my_variable = "Hello World";
-wp_php_log ( $my_variable, "my string" );
-
-$my_variable = 12345;
-wp_php_log ( $my_variable, "my integer" );
-
-$my_variable = 867.5309;
-wp_php_log ( $my_variable, "my float" );
-
-$post_meta = get_post_meta (1806);
-
-wp_php_log ( $post_meta, "post meta" );
-
-$variable = "If you don't specify a variable name string...";
-wp_php_log ( $variable);
-
-global $woocommerce;
-wp_php_log ( $woocommerce, 'woocommerce object' );
 
 // BASIC SECURITY
 defined( 'ABSPATH' ) or die( 'Unauthorized Access!' );
@@ -92,7 +71,11 @@ function rn_wpphp_main_page(){
 		echo '</div>';
 
 		echo "<h3>" . __('Log:', 'wp-php-log') . '</h3>';
-				
+		
+		if ( count ( $log ) == 0 ) {
+			echo '<p>' . __('Log is empty.', 'wp-php-log') . '</p>';
+		}
+		
 		forEach ( $log as $item ) {
 			
 			if ( is_array ( $item['var'] ) OR is_object ( $item['var'] ) ) {
