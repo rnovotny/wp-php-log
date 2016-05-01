@@ -18,12 +18,12 @@ defined( 'ABSPATH' ) or die( 'Unauthorized Access!' );
 define( 'RN_WPPHP_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'RN_WPPHP_PLUGINS_URL', plugins_url( '', __FILE__ ) );
 
-function wp_php_log ( $var, $name = '' ) {
-	empty ( $name ) ? $name = date("r") : '';
+function wp_php_log ( $var, $name = 'unnamed-var' ) {
 	$log = get_option ( 'rn_wpphp_log' );
 	$log[] = array (
 		'var' => $var,
 		'name' => $name,
+		'time' => date("r"),
 	);
 	update_option ( 'rn_wpphp_log', $log );
 }
@@ -58,7 +58,7 @@ function rn_wpphp_main_page(){
 			
 		echo "<h2>" . __('WordPress PHP Log Plugin', 'wp-php-log') . '</h2>';
 		
-		echo "<pre class='rn_php_pre'>" . __('<strong>Usage: </strong>wp_php_log( mixed $var [, string $name = date("r") ] )', 'wp-php-log') . '</pre>';
+		echo "<pre class='rn_php_pre'>" . __('<strong>Usage: </strong>wp_php_log( mixed $var [, string $name = "unnamed-var" ] )', 'wp-php-log') . '</pre>';
 		echo "<pre class='rn_php_pre'>" . __('<strong>Example: </strong>wp_php_log( $my_variable, "my variable" ); ', 'wp-php-log') . '</pre>';	
 		
 		echo '<div id="rn_wpphp_controls">';
@@ -78,17 +78,17 @@ function rn_wpphp_main_page(){
 		forEach ( $log as $item ) {
 			
 			if ( is_array ( $item['var'] ) OR is_object ( $item['var'] ) ) {
-				echo '<div class="rn_wpphp_item"><h4 class="rn_wpphp_var_dump">' . $item['name'] . ' (var_dump)</h4>';
+				echo '<div class="rn_wpphp_item"><p class="rn_wpphp_var_dump">var_dump( <strong>' . $item['name'] . '</strong> ) @ ' . $item['time'] . ':</p>';
 				echo '<pre class="rn_wpphp_var_dump rn_php_pre">';
 				var_dump ( $item['var'] );
 				echo '</pre>';
-				echo '<div class="rn_wpphp_item"><h4 class="rn_wpphp_print_r">' . $item['name'] . ' (print_r)</h4>';
+				echo '<div class="rn_wpphp_item"><p class="rn_wpphp_print_r">print_r( <strong>' . $item['name'] . '</strong> ) @ ' . $item['time'] . ':</p>';
 				echo '<pre class="rn_wpphp_print_r rn_php_pre">';
 				print_r ( $item['var'] );
 				echo '</pre>';			
 				
 			} else {
-				echo '<div class="rn_wpphp_item"><h4>' . $item['name'] . '</h4>';
+				echo '<div class="rn_wpphp_item"><p><strong>' . $item['name'] . '</strong> @ ' . $item['time'] . '</p>';
 				echo '<pre class="rn_php_pre">' . $item['var']. '</pre>';
 			}
 			echo '</div>';
