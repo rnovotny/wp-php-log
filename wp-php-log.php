@@ -10,9 +10,17 @@ Author URI: https://ryanmnovotny.com
 License: GPLv2
 Version: 1.0.0
 */
+$my_variable = null;
+wp_php_log ( $my_variable, "null" );
 
 $my_variable = "Hello World";
-wp_php_log ( $my_variable, "my variable" );
+wp_php_log ( $my_variable, "my string" );
+
+$my_variable = 12345;
+wp_php_log ( $my_variable, "my integer" );
+
+$my_variable = 867.5309;
+wp_php_log ( $my_variable, "my float" );
 
 $post_meta = get_post_meta (1806);
 
@@ -72,8 +80,8 @@ function rn_wpphp_main_page(){
 			
 		echo "<h2>" . __('WordPress PHP Log Plugin', 'wp-php-log') . '</h2>';
 		
-		echo "<pre class='rn_php_pre'>" . __('<strong>Usage:</strong> wp_php_log( int|string|array $var, string $name = time() (Optional) )', 'wp-php-log') . '</pre>';
-		echo "<pre class='rn_php_pre'>" . __('<strong>Example:</strong> wp_php_log( $my_variable, "my variable") ', 'wp-php-log') . '</pre>';	
+		echo "<pre class='rn_php_pre'>" . __('<strong>Usage:</strong> wp_php_log( mixed $var [, string $name = date("r") ] )', 'wp-php-log') . '</pre>';
+		echo "<pre class='rn_php_pre'>" . __('<strong>Example:</strong> wp_php_log( $my_variable, "my variable" ) ', 'wp-php-log') . '</pre>';	
 		
 		echo '<div id="rn_wpphp_controls">';
 			echo '<p><strong>' . __('Controls', 'wp-php-log') . '</strong></p>';
@@ -86,16 +94,19 @@ function rn_wpphp_main_page(){
 		echo "<h3>" . __('Log:', 'wp-php-log') . '</h3>';
 				
 		forEach ( $log as $item ) {
-			echo '<div class="rn_wpphp_item"><h4>' . $item['name'] . '</h4>';
+			
 			if ( is_array ( $item['var'] ) OR is_object ( $item['var'] ) ) {
+				echo '<div class="rn_wpphp_item"><h4 class="rn_wpphp_var_dump">' . $item['name'] . ' (var_dump)</h4>';
 				echo '<pre class="rn_wpphp_var_dump rn_php_pre">';
 				var_dump ( $item['var'] );
 				echo '</pre>';
+				echo '<div class="rn_wpphp_item"><h4 class="rn_wpphp_print_r">' . $item['name'] . ' (print_r)</h4>';
 				echo '<pre class="rn_wpphp_print_r rn_php_pre">';
 				print_r ( $item['var'] );
 				echo '</pre>';			
 				
 			} else {
+				echo '<div class="rn_wpphp_item"><h4>' . $item['name'] . '</h4>';
 				echo '<pre class="rn_php_pre">' . $item['var']. '</pre>';
 			}
 			echo '</div>';

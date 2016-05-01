@@ -1,12 +1,11 @@
 /***** WP PHP LOG ADMIN CSS *****/
 
-/***** PRE *****/
-
 .rn_php_pre {
 	border: 1px solid #aaa;
 	padding: 10px;
 	background-color: white;
 	width: 98%;
+	overflow-y: scroll;
 }
 
 #rn_wpphp_controls {
