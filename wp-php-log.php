@@ -94,17 +94,17 @@ function rn_wpphp_main_page(){
 			
 			if ( is_array ( $item['var'] ) OR is_object ( $item['var'] ) ) {
 				echo '<div class="rn_wpphp_item"><p class="rn_wpphp_var_dump">var_dump( <strong>' . $item['name'] . '</strong> ) @ ' . $item['time'] . ':</p>';
-				echo '<pre class="rn_wpphp_var_dump rn_php_pre">';
-				var_dump ( $item['var'] );
-				echo '</pre>';
+					echo '<pre class="rn_wpphp_var_dump rn_php_pre">';
+						var_dump ( $item['var'] );
+					echo '</pre>';
 				echo '<div class="rn_wpphp_item"><p class="rn_wpphp_print_r">print_r( <strong>' . $item['name'] . '</strong> ) @ ' . $item['time'] . ':</p>';
-				echo '<pre class="rn_wpphp_print_r rn_php_pre">';
-				print_r ( $item['var'] );
-				echo '</pre>';			
+					echo '<pre class="rn_wpphp_print_r rn_php_pre">';
+						print_r ( $item['var'] );
+					echo '</pre>';			
 				
 			} else {
 				echo '<div class="rn_wpphp_item"><p><strong>' . $item['name'] . '</strong> @ ' . $item['time'] . '</p>';
-				echo '<pre class="rn_php_pre">' . $item['var']. '</pre>';
+				echo '<pre class="rn_php_pre">' . htmlentities( $item['var'] ) . '</pre>';
 			}
 			echo '</div>';
 		}
@@ -126,3 +126,5 @@ function rn_wpphp_clear_log() {
 	wp_die();
 }
 add_action( 'wp_ajax_rn_wpphp_delete_action', 'rn_wpphp_clear_log' );
+
+
